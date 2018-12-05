@@ -9,6 +9,7 @@ node('linux') {
     sh 'ant -f build.xml -v'
   }
   stage('Results') {
+  sh "aws s3 bucket damay100-assignment11'
     junit 'reports/*.xml'
   }
 }
