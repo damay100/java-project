@@ -9,7 +9,8 @@ node('linux') {
     sh 'ant -f build.xml -v'
   }
   stage('Results') {
-  sh "aws s3 bucket --damay100-assignment11'
+  s3Upload consoleLogLevel: 'INFO', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'damay100-assignment11', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: '', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'jenkins-JenkinsAccessRole-HIPNKMEOC1FL', userMetadata: []
+
     junit 'reports/*.xml'
   }
 }
